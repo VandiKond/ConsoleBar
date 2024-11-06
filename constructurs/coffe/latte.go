@@ -13,24 +13,24 @@ import (
 )
 
 // # Creating a new latte in the console
-// Getting ml of balck coffe
+// Getting ml of black coffee
 // ml of milk
 // The type and amount (in ml) of syrup
 // Creating an array of additives for the coffee
-// Sending the informaition about the coffe creation and returning a created latte
+// Sending the information about the coffee creation and returning a created latte
 func NewLatte() (coffee.Latte, error) {
 	// Starting the creation
 	fmt.Println("Hi! Let's Make your latte!\nIf you want to stop say 'exit'")
 
-	// Askong for exit
+	// Asking for exit
 	var exit string
 	fmt.Scanln(&exit)
 	if exit == "exit" {
 		return coffee.Latte{}, fmt.Errorf("user exited")
 	}
 
-	// Getting and validating the balck coffe amount
-	fmt.Println("Chose the amount of black coffe you want")
+	// Getting and validating the black coffee amount
+	fmt.Println("Chose the amount of black coffee you want")
 	var coffeMl float64
 	var baseFloat float64
 	fmt.Scanln(&coffeMl)
@@ -45,7 +45,7 @@ func NewLatte() (coffee.Latte, error) {
 	fmt.Scanln(&milkMl)
 
 	// getting the syrup type
-	fmt.Println("Write a syrup type here. Chose between:\nvanila\n\nafter say the amount of syrup")
+	fmt.Println("Write a syrup type here. Chose between:\nvanilla\n\nafter say the amount of syrup")
 	var syrupType string
 	var syrupAmount float64
 	var Syrup syrups.Syrup
@@ -53,8 +53,8 @@ func NewLatte() (coffee.Latte, error) {
 
 	// validating the syrup type
 	switch syrupType {
-	case "vanila":
-		Syrup = &syrups.Vanila{}
+	case "vanilla":
+		Syrup = &syrups.Vanilla{}
 		break
 	default:
 		fmt.Println("Unknown syrup type: ", syrupType)
@@ -68,9 +68,9 @@ func NewLatte() (coffee.Latte, error) {
 	// Creating the base latte without the additives
 	latte := coffee.Latte{MlCoffe: coffeMl, MlMilk: milkMl, Syrup: Syrup}
 
-	// Asking for the attigives and going in the loop
+	// Asking for the additives and going in the loop
 	additiveSl := []additives.Additive{}
-	fmt.Println("Now, please write the additives you want:\n\nsugar\nafter each additive write the amount of it\nfor exiting write 'stop'")
+	fmt.Println("Now, please write the additives you want:\n\nsugar \nafter each additive write the amount of it\nfor exiting write 'stop'")
 	for {
 		// Getting the additive
 		breakQ := false
@@ -87,7 +87,7 @@ func NewLatte() (coffee.Latte, error) {
 			breakQ = true
 			break
 		default:
-			fmt.Println("Unknown additive: ", addtiveType, "\nContinuing, if you wnat to stop write 'stop'")
+			fmt.Println("Unknown additive: ", addtiveType, "\nContinuing, if you want to stop write 'stop'")
 			continue
 		}
 		if breakQ {
@@ -96,7 +96,7 @@ func NewLatte() (coffee.Latte, error) {
 
 		// getting the additive amount
 		var additiveAmmount float64
-		fmt.Println("now write the ammount of", addtiveType, "you want (in gramms)")
+		fmt.Println("now write the amount of", addtiveType, "you want (in grams)")
 		fmt.Scanln(&additiveAmmount)
 
 		// Adding the additive to the slice
@@ -108,9 +108,9 @@ func NewLatte() (coffee.Latte, error) {
 	latte.Additives = additiveSl
 
 	// Sending the coffee info
-	fmt.Printf("Yey! You've made your latte:\nml of black coffe : %v\nml of milk : %v\nsyrup : %s (%v ml)\nadditives : \n", latte.MlCoffe, latte.MlMilk, latte.Syrup.GetType(), latte.Syrup.GetMl())
+	fmt.Printf("Yey! You've made your latte:\nml of black coffee : %v\nml of milk : %v\nsyrup : %s (%v ml)\nadditives : \n", latte.MlCoffe, latte.MlMilk, latte.Syrup.GetType(), latte.Syrup.GetMl())
 	for _, a := range latte.Additives {
-		fmt.Printf("%s (%v gramms)\n", a.GetType(), a.GetGrams())
+		fmt.Printf("%s (%v grams)\n", a.GetType(), a.GetGrams())
 	}
 
 	// Returning
