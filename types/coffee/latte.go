@@ -42,7 +42,7 @@ func (l Latte) AddSyrop(syrop syrops.Syrop) (Coffee, error) {
 
 // Ads an additive
 func (l Latte) AddAdditive(additive additives.Additive) (Coffee, error) {
-	// Ads a new element to the slice of edditives
+	// Ads a new element to the slice of additives
 	l.Additives = append(l.Additives, additive)
 
 	// returns the latte
