@@ -6,7 +6,19 @@ A pet-project :B
 
 ## How could you use the project?
 
-- Write: 
+1. Create a derectory (folder)
+
+2. go to the folder in the console 
+```shell
+cd path_to_your_folder
+```
+
+3. write in the console 
+```shell
+go mod init your_project_name
+```
+
+4. install the project 
 
 ```shell 
 go get github.com/VandiKond/ConsoleBar
