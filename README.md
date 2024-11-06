@@ -6,7 +6,7 @@ A pet-project :B
 
 ## How could you use the project?
 
-1. Create a derectory (folder)
+1. Create a directory (folder)
 
 2. go to the folder in the console 
 ```shell
@@ -24,7 +24,7 @@ go mod init your_project_name
 go get github.com/VandiKond/ConsoleBar
 ```
 
-## Standart usage 
+## Standard usage 
 
 ```golang
 package main
@@ -67,7 +67,7 @@ func main() {
     - replace "additive" to your structure name
 
 3. AddMore
-    - Ads more grams to the additive
+    - Adds more grams to the additive
     - Example :
     ```golang 
     func (a Additive) AddMore(grams float64) Additive {
@@ -79,73 +79,73 @@ func main() {
 
 ### Coffee 
 
-- It's an interface for coffee (example: latte, cappuchino, coffee with milk)
+- It's an interface for coffee (example: latte, cappuccino, coffee with milk)
 
 - Methods 
 
-1. AddSyrop
-    - Ads syrop to the coffee
+1. Addsyrup
+    - Adds syrup to the coffee
     - Example:
     ```golang
-    func (c Coffee) AddSyrop(syrop syrops.Syrop) (Coffee, error) {
-        // Checks are syrops similar
-        if c.Syrop.GetType() != syrop.GetType() {
-            return l, Errors.NewError(coffeerrors.TDS, fmt.Sprintf("%s is not %s", c.Syrop.GetType(), syrop.GetType()))
+    func (c Coffee) AddSyrup(syrup syrups.Syrup) (Coffee, error) {
+        // Checks are syrups similar
+        if c.Syrup.GetType() != syrup.GetType() {
+            return l, Errors.NewError(coffeerrors.TDS, fmt.Sprintf("%s is not %s", c.Syrup.GetType(), syrup.GetType()))
         }
-        // Ads syrop
-        c.Syrop = l.Syrop.AddMore(syrop.GetMl())
+        // Adds syrup
+        c.Syrup = l.Syrup.AddMore(syrup.GetMl())
 
         // returns the coffee
         return l, nil
     }
     ```
-    - Expects that the sturcture you are using has a parametor `Syrop` 
+    - Expects that the structure you are using has a parameter `Syrup` 
 
 2. AddAdditive
-    - Ads an additive to the coffee
+    - Adds an additive to the coffee
     - Example:
     ```golang
     func (c Coffee) AddAdditive(additive additives.Additive) (Coffee, error) {
-        // Ads a new element to the slice of additives
+        // Adds a new element to the slice of additives
         c.Additives = append(c.Additives, additive)
 
         // returns the coffee
         return c, nil
     }
     ```
-    - Expects that the sturcture you are using has a parametor `Additives` *(slice of Addective)*
+    - Expects that the structure you are using has a parameter `Additives` *(slice of Addective)*
 
-### Syrops
+### Syrups
 
-- It's an interface for syrops that you can add to drinks (example: vanila syrop, choclate syrop, salted caramel syrup)
+- It's an interface for syrups that you can add to drinks (example: vanilla syrup, chocolate syrup, salted caramel syrup)
 
 - Methods 
 
 1. GetMl 
-    - Gets the amount of the syrop (in ml)
+    - Gets the amount of the syrup (in ml)
     - Example : 
     ```golang
-    func (s Syrop) GetMl() float64 {
+    func (s Syrup) GetMl() float64 {
         return s.Ml
     }
     ```
     - structure for this example should have parameter `Ml`
 
 2. GetType
-    - Gets the type of the syrop
+    - Gets the type of the syrup
     - Example : 
     ```golang
-    func (s Syrop) GetType() string {
-	    return "syrop"
+    func (s Syrup) GetType() string {
+	    return "syrup"
     }
     ```
-    - replace "syrop" to your structure name
+    - replace "syrup" to your structure name
 
 3. AddMore
-    - Ads more grams to the additive
+    - Adds more grams to the additive
     - Example :
     ```golang 
-    func (s Syrop) AddMore(grams float64) Syrop {
+    func (s Syrup) AddMore(grams float64) Syrup {
         v.Ml += ml
         return v
     }
@@ -154,21 +154,21 @@ func main() {
 
 ## Error types
 
-### Coffe errors
+### Coffee errors
 
-- TDS : cant add two different syrops (two different syrops)
+- TDS : cant add two different syrups (two different syrups)
     - indicates that you can't mix two sirops 
 
-- NEC : not enougth coffe
+- NEC : not enough coffee
     - indicates that you can't have zero or negative amount of coffee
 
-### Syrop errors 
+### Syrup errors 
 
-- UST : unknown syrop type
-    - indicates, that the program dosen't know the syrop type
+- UST : unknown syrup type
+    - indicates, that the program doesn't know the syrup type
 
 ## Other 
 
-- actualy there are other more tyny methods that i haven't managed
+- actually there are other more methods that i haven't managed
 
 - In some time i would talk about the created functionality :B

@@ -17,7 +17,7 @@ func (s Sugar) GetType() string {
 	return "sugar"
 }
 
-// Ads more sugar
+// Adds more sugar
 func (s Sugar) AddMore(grams float64) Additive {
 	s.Grams += grams
 	return s

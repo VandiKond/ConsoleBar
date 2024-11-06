@@ -6,16 +6,16 @@ import (
 
 	Errors "github.com/VandiKond/ConsoleBar/errors"
 	coffeerrors "github.com/VandiKond/ConsoleBar/errors/coffe_errors"
-	syroperros "github.com/VandiKond/ConsoleBar/errors/syrop_erros"
+	syruperros "github.com/VandiKond/ConsoleBar/errors/syrup_erros"
 	"github.com/VandiKond/ConsoleBar/types/additives"
 	"github.com/VandiKond/ConsoleBar/types/coffee"
-	"github.com/VandiKond/ConsoleBar/types/syrops"
+	"github.com/VandiKond/ConsoleBar/types/syrups"
 )
 
 // # Creating a new latte in the console
 // Getting ml of balck coffe
 // ml of milk
-// The type and amount (in ml) of syrop
+// The type and amount (in ml) of syrup
 // Creating an array of additives for the coffee
 // Sending the informaition about the coffe creation and returning a created latte
 func NewLatte() (coffee.Latte, error) {
@@ -44,29 +44,29 @@ func NewLatte() (coffee.Latte, error) {
 	var milkMl float64
 	fmt.Scanln(&milkMl)
 
-	// getting the syrop type
-	fmt.Println("Write a syrop type here. Chose between:\nvanila\n\nafter say the amount of syrop")
-	var syropType string
-	var syropAmount float64
-	var Syrop syrops.Syrop
-	fmt.Scanln(&syropType)
+	// getting the syrup type
+	fmt.Println("Write a syrup type here. Chose between:\nvanila\n\nafter say the amount of syrup")
+	var syrupType string
+	var syrupAmount float64
+	var Syrup syrups.Syrup
+	fmt.Scanln(&syrupType)
 
-	// validating the syrop type
-	switch syropType {
+	// validating the syrup type
+	switch syrupType {
 	case "vanila":
-		Syrop = &syrops.Vanila{}
+		Syrup = &syrups.Vanila{}
 		break
 	default:
-		fmt.Println("Unknown syrop type: ", syropType)
-		return coffee.Latte{}, Errors.NewError(syroperros.UST, syropType)
+		fmt.Println("Unknown syrup type: ", syrupType)
+		return coffee.Latte{}, Errors.NewError(syruperros.UST, syrupType)
 	}
 
-	fmt.Println("Now write the amount of syrop you want (in ml)")
-	fmt.Scanln(&syropAmount)
-	Syrop = Syrop.AddMore(syropAmount)
+	fmt.Println("Now write the amount of syrup you want (in ml)")
+	fmt.Scanln(&syrupAmount)
+	Syrup = Syrup.AddMore(syrupAmount)
 
 	// Creating the base latte without the additives
-	latte := coffee.Latte{MlCoffe: coffeMl, MlMilk: milkMl, Syrop: Syrop}
+	latte := coffee.Latte{MlCoffe: coffeMl, MlMilk: milkMl, Syrup: Syrup}
 
 	// Asking for the attigives and going in the loop
 	additiveSl := []additives.Additive{}
@@ -108,7 +108,7 @@ func NewLatte() (coffee.Latte, error) {
 	latte.Additives = additiveSl
 
 	// Sending the coffee info
-	fmt.Printf("Yey! You've made your latte:\nml of black coffe : %v\nml of milk : %v\nsyrop : %s (%v ml)\nadditives : \n", latte.MlCoffe, latte.MlMilk, latte.Syrop.GetType(), latte.Syrop.GetMl())
+	fmt.Printf("Yey! You've made your latte:\nml of black coffe : %v\nml of milk : %v\nsyrup : %s (%v ml)\nadditives : \n", latte.MlCoffe, latte.MlMilk, latte.Syrup.GetType(), latte.Syrup.GetMl())
 	for _, a := range latte.Additives {
 		fmt.Printf("%s (%v gramms)\n", a.GetType(), a.GetGrams())
 	}
